@@ -28,8 +28,9 @@ FronEnd and Server
 The FrontEnd folder hold the webpages while
 The Server folder hold the BackEnd logic and data control functions
 
-step 2) After you create the DataBase, then navigate to folder called Server.
 
+step 2) After you create the DataBase, then navigate to folder called Server.
+---
 Open your system Terminal and navigate to the server directory
 
 make sure you already have Node.js running in your machine
@@ -40,6 +41,12 @@ make sure you already have Node.js running in your machine
 Type this code:
 
 npm install
+npm install nodemon -D
+
+to start the Server type :
+ 
+ nodemon Server
+ ---
 
 ---------------------------------------------------------------
 ----------------------------------------------------------------
@@ -95,7 +102,9 @@ then
 
 Navigate to Server folder in Terminal and type 
 
- npm start
+ to start the Server type :
+ 
+ nodemon Server
  
  
  Login details
