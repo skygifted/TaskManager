@@ -36,7 +36,7 @@ Open your system Terminal and navigate to the server directory
 make sure you already have Node.js running in your machine
 
 ---------------------------------------------------------------
- Option 1, Highly recommended
+ Option 1,
  
 Type this code:
 
