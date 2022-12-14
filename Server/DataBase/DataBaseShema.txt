@@ -1,0 +1,50 @@
+// DataBase name
+
+ CREATE DATABASE task_manager
+
+
+ // Register Users Tabble
+
+ CREATE TABLE register_user(
+
+    register_user_id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Fname VARCHAR(200) NOT NULL,
+    Lname VARCHAR(200) NOT NULL,
+    Mobile VARCHAR(200) NOT NULL,
+    Email VARCHAR(200) NOT NULL,
+    user_ID VARCHAR(200) NOT NULL,
+    UserType VARCHAR(200) NOT NULL,
+    Psswrd VARCHAR(200) NOT NULL,
+    registerDate VARCHAR(200) NOT NULL,
+    picture VARCHAR(200),
+    acc_status VARCHAR(10) NOT NULL,
+    acc_type VARCHAR(100) NOT NULL,
+    userTokenID VARCHAR(200) NOT NULL,
+  
+ );
+
+
+// Task Table for creating task for an employee
+
+CREATE TABLE  task_giver(
+   
+   task_giver int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+   Employee_fname VARCHAR(100),
+   Employee_lname VARCHAR(100),
+   employee_id VARCHAR(100),
+   task_id VARCHAR(100),
+   Task1 VARCHAR(100),
+   Task2 VARCHAR(100),
+   Task3 VARCHAR(100),
+   TextMsg VARCHAR(2000),
+   employee_email VARCHAR(100),
+   employee_des VARCHAR(2000),
+   submit_status VARCHAR(100),
+   UserType VARCHAR(100),
+   userTokenID VARCHAR(100)
+);
+
+
+// Admin Login Credentials
+
+INSERT INTO  register_user ( Fname ,  Lname ,  Mobile ,  Email ,  user_ID ,  UserType ,  Psswrd ,  registerDate ,  picture ,  acc_status ,  acc_type ,  userTokenID ) VALUES ('Abdulazeez','Ibrahim','777777777','admin@gmail.com','566788787','Admin','$2b$10$Kvqr.kqQkzABsOr887f9XOU5ijKRD9GrAAGnQtHd8fmTnZ6JWztcO','Dec-2022','file','1','Admin','4389GJHJHHJ0904903');
