@@ -1,0 +1,402 @@
+Officially it's ECMAScript 2015 Language
+Officially, the name is "ECMAScript 2015 Language" and it's the 6th Edition of the ECMA-262 standard. The specification mentions neither ES6 nor ES2015, though they are handy abbreviations
+
+Is it ECMAScript or JavaScript? In everyday life, you can use the terms ECMAScript and JavaScript interchangeably. ECMAScript is a specification of a language. JavaScript is an implementation of that language among JScript and ActionScript. 
+
+New features in JS engines before in ECMAScript standard
+A new language feature goes through many phases before being included in the specification. It grows from an idea into a commented proposal and into an accepted language feature. Periodically, the committee responsible for the ECMAScript specification collects accepted language features and writes an updated edition of the ECMAScript specification.
+In the last stage, before the feature being accepted into the language, the committee requires that two shipping VMs exist that implement the feature. This means that Chrome and Firefox can implement a language feature before it's included in an official ECMAScript specification.
+The 'implementation first'-approach means that you will be checking if a JS engine supports a specific language feature instead of supporting a specific ECMAScript version. The situation is similar to CSS, HTML, and browser runtime environment. Instead of checking for a version number, you'd check if Intersection Observer API works in your choice of browsers.
+
+What name to use?
+The ECMAScript 2015 Language version was the last big release. Future updates to the specification will be smaller. New language features will be implemented in JavaScript engines before they are officially included in the specification.
+You should talk about
+use ES6 to refer to "ECMAScript 2015 Language" (arrow functions, template strings, Promises), it's shorter than ES2015, and both are unofficial, ES6 was the last big release, and the name is in line with the previous big release ES5, things change after that
+after ES6, use names of language features, such as "globalThis" and "Array.prototype.flatMap", the specification is only updated after working implementations exist in JS engines, check TC39 Finished Proposals for a list of features to be included in the next specification
+for historically referring one year's updates to the ECMAScript specification use ES[year]
+ECMAScript 2015, also known as ES6, introduced JavaScript Classes.
+JavaScript Classes are templates for JavaScript Objects.
+
+
+
+
+
+Modules
+JavaScript modules allow you to break up your code into separate files.
+This makes it easier to maintain the code-base.
+JavaScript modules rely on the import and export statements.
+
+Export
+You can export a function or variable from any file.
+Let us create a file named person.js, and fill it with the things we want to export.
+There are two types of exports: Named and Default.
+
+Named Exports
+You can create named exports two ways. In-line individually, or all at once at the bottom.
+In-line individually:
+person.js
+export const name = "Jesse";
+export const age = 40;
+ 
+All at once at the bottom:
+person.js
+const name = "Jesse";
+const age = 40;
+ 
+export {name, age};
+ 
+Default Exports
+Let us create another file, named message.js, and use it for demonstrating default export.
+You can only have one default export in a file.
+ 
+message.js
+const message = () => {
+const name = "Jesse";
+const age = 40;
+return name + ' is ' + age + 'years old.';
+};
+ 
+export default message;
+Import
+You can import modules into a file in two ways, based on if they are named exports or default exports.
+Named exports are constructed using curly braces. Default exports are not.
+Import from named exports
+Import named exports from the file person.js:
+import { name, age } from "./person.js";
+Import from default exports
+Import a default export from the file message.js:
+import message from "./message.js";
+Note
+Modules only work with the HTTP(s) protocol.
+A web-page opened via the file:// protocol cannot use import / export.
+JavaScript Arrow Function
+Arrow functions were introduced in ES6.
+Arrow functions allow us to write shorter function syntax:
+let myFunction = (a, b) => a * b;
+ 
+Before Arrow:
+hello = function() {
+  return "Hello World!";
+}
+With Arrow Function:
+hello = () => {
+  return "Hello World!";
+}
+It gets shorter! If the function has only one statement, and the statement returns a value, you can remove the brackets and the return keyword:
+Arrow Functions Return Value by Default:
+hello = () => "Hello World!";
+This works only if the function has only one statement.
+If you have parameters, you pass them inside the parentheses:
+Arrow Function With Parameters:
+hello = (val) => "Hello " + val;
+In fact, if you have only one parameter, you can skip the parentheses as well:
+Arrow Function Without Parentheses:
+hello = val => "Hello " + val;
+ 
+Scope determines the accessibility (visibility) of variables.
+JavaScript has 3 types of scope:
+Block scope
+Function scope
+Global scope
+Block Scope
+Before ES6 (2015), JavaScript had only Global Scope and Function Scope.
+ES6 introduced two important new JavaScript keywords: let and const.
+These two keywords provide Block Scope in JavaScript.
+Variables declared inside a { } block cannot be accessed from outside the block:
+Example
+{
+  let x = 2;
+}
+// x can NOT be used here
+Variables declared with the var keyword can NOT have block scope.
+Variables declared inside a { } block can be accessed from outside the block.
+{
+  var x = 2;
+}
+// x CAN be used here
+Local Scope
+Variables declared within a JavaScript function, become LOCAL to the function.
+Example
+// code here can NOT use carName
+ 
+function myFunction() {
+  let carName = "Volvo";
+  // code here CAN use carName
+}
+ 
+// code here can NOT use carName
+JavaScript Template Literals
+Synonyms:
+Template Literals
+Template Strings
+String Templates
+Back-Tics Syntax
+Back-Tics Syntax
+Template Literals use back-ticks (``) rather than the quotes ("") to define a string:
+Example
+let text = `Hello World!`;
+Quotes Inside Strings
+With template literals, you can use both single and double quotes inside a string:
+Example
+let text = `He's often called "Johnny"`;
+Multiline Strings
+Template literals allows multiline strings:
+Example
+let text =
+`The quick
+brown fox
+jumps over
+the lazy dog`;
+Interpolation
+Template literals provide an easy way to interpolate variables and expressions into strings.
+The method is called string interpolation.
+The syntax is:
+${...}
+Variable Substitutions
+Template literals allow variables in strings:
+Example
+let firstName = "John";
+let lastName = "Doe";
+ 
+let text = `Welcome ${firstName}, ${lastName}!`;
+JavaScript Rest vs Spread Operator
+JavaScript uses three dots (...) for both the rest and spread operators. But these two operators are not the same.
+The main difference between rest and spread is that the rest operator puts the rest of some specific user-supplied values into a JavaScript array. But the spread syntax expands iterables into individual elements.
+For instance, consider this code that uses rest to enclose some values into an array:
+// Use rest to enclose the rest of specific user-supplied values into an array:
+function myBio(firstName, lastName, ...otherInfo) { 
+  return otherInfo;
+}
+ 
+// Invoke myBio function while passing five arguments to its parameters:
+myBio("Oluwatobi", "Sofela", "CodeSweetly", "Web Developer", "Male");
+ 
+// The invocation above will return:
+["CodeSweetly", "Web Developer", "Male"]
+Try it on StackBlitz
+In the snippet above, we used the ...otherInfo rest parameter to put "CodeSweetly", "Web Developer", and "Male" into an array.
+Now, consider this example of a spread operator:
+// Define a function with three parameters:
+function myBio(firstName, lastName, company) { 
+  return `${firstName} ${lastName} runs ${company}`;
+}
+ 
+// Use spread to expand an array’s items into individual arguments:
+myBio(...["Oluwatobi", "Sofela", "CodeSweetly"]);
+ 
+// The invocation above will return:
+“Oluwatobi Sofela runs CodeSweetly”
+Try it on StackBlitz
+In the snippet above, we used the spread operator (...) to spread ["Oluwatobi", "Sofela", "CodeSweetly"]’s content across myBio()’s parameters.
+Default parameters
+Default function parameters allow named parameters to be initialized with default values if no value or undefined is passed.
+ 
+function multiply(a, b = 1) {
+  return a * b;
+}
+ 
+console.log(multiply(5, 2));
+// expected output: 10
+ 
+console.log(multiply(5));
+// expected output: 5
+ 
+Destructuring assignment
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+let a, b, rest;
+[a, b] = [10, 20];
+ 
+console.log(a);
+// expected output: 10
+ 
+console.log(b);
+// expected output: 20
+ 
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+ 
+console.log(rest);
+// expected output: Array [30,40,50]
+Similarly, you can destructure objects on the left-hand side of the assignment.
+ 
+const obj = { a: 1, b: 2 };
+const { a, b } = obj;
+// is equivalent to:
+// const a = obj.a;
+// const b = obj.b;
+Object.assign()
+The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the modified target object.
+ 
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+ 
+const returnedTarget = Object.assign(target, source);
+ 
+console.log(target);
+// expected output: Object { a: 1, b: 4, c: 5 }
+ 
+console.log(returnedTarget);
+// expected output: Object { a: 1, b: 4, c: 5 }
+Object initializer
+Objects can be initialized using new Object(), Object.create(), or using the literal notation (initializer notation). An object initializer is a comma-delimited list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ({}).
+const object1 = { a: 'foo', b: 42, c: {} };
+ 
+console.log(object1.a);
+// expected output: "foo"
+ 
+const a = 'foo';
+const b = 42;
+const c = {};
+const object2 = { a: a, b: b, c: c };
+ 
+console.log(object2.b);
+// expected output: 42
+ 
+const object3 = { a, b, c };
+ 
+console.log(object3.a);
+// expected output: "foo"
+
+
+
+What is Node.js?
+Node.js is an open source server environment
+Node.js is free
+Node.js runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.)
+Node.js uses JavaScript on the server
+
+Why Node.js?
+Node.js uses asynchronous programming!
+A common task for a web server can be to open a file on the server and return the content to the client.
+Here is how PHP or ASP handles a file request:
+Sends the task to the computer's file system.
+Waits while the file system opens and reads the file.
+Returns the content to the client.
+Ready to handle the next request.
+Here is how Node.js handles a file request:
+Sends the task to the computer's file system.
+Ready to handle the next request.
+When the file system has opened and read the file, the server returns the content to the client.
+Node.js eliminates the waiting, and simply continues with the next request.
+Node.js runs single-threaded, non-blocking, asynchronous programming, which is very memory efficient.
+
+What Can Node.js Do?
+Node.js can generate dynamic page content
+Node.js can create, open, read, write, delete, and close files on the server
+Node.js can collect form data
+Node.js can add, delete, modify data in your database
+
+What is a Node.js File?
+Node.js files contain tasks that will be executed on certain events
+A typical event is someone trying to access a port on the server
+Node.js files must be initiated on the server before having any effect
+Node.js files have extension ".js"
+What is a Module in Node.js?
+Consider modules to be the same as JavaScript libraries.
+A set of functions you want to include in your application.
+
+Built-in Modules
+Node.js has a set of built-in modules which you can use without any further installation.
+Look at our Built-in Modules Reference for a complete list of modules.
+
+Include Modules
+To include a module, use the require() function with the name of the module:
+The World's Largest Software Registry (Library)
+npm is the world's largest Software Registry.
+The registry contains over 800,000 code packages.
+Open-source developers use npm to share software.
+Many organizations also use npm to manage private development.
+
+Using npm is Free
+npm is free to use.
+You can download all npm public software packages without any registration or logon.
+
+Command Line Client
+npm includes a CLI (Command Line Client) that can be used to download and install software:
+Windows Example
+C:\>npm install <package>
+Mac OS Example
+>npm install <package>
+
+Installing npm
+npm is installed with Node.js
+This means that you have to install Node.js to get npm installed on your computer.
+Download Node.js from the official Node.js web site: https://nodejs.org
+
+Software Package Manager
+The name npm (Node Package Manager) stems from when npm first was created as a package manager for Node.js.
+All npm packages are defined in files called package.json.
+The content of package.json must be written in JSON.
+At least two fields must be present in the definition file: name and version.
+Example
+{
+"name" : "foo",
+"version" : "1.2.3",
+"description" : "A package for fooing things",
+"main" : "foo.js",
+"keywords" : ["foo", "fool", "foolish"],
+"author" : "John Doe",
+"licence" : "ISC"
+}
+
+Managing Dependencies
+npm can manage dependencies.
+npm can (in one command line) install all the dependencies of a project.
+Dependencies are also defined in package.json.
+
+Sharing Your Software
+If you want to share your own software in the npm registry, you can sign in at:
+https://www.npmjs.com
+
+Publishing a Package
+You can publish any directory from your computer as long as the directory has a package.json file.
+Check if npm is installed:
+Yarn is a JavaScript package manager created by Facebook. Yarn stands for Yet Another Resource Negotiator. It provides similar functionalities as NPM. It is an alternative to NPM when installing, uninstalling, and managing package dependencies from the NPM registry or GitHub repositories.
+ 
+What is Babel?
+Babel is a JavaScript compiler
+Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. Here are the main things Babel can do for you:
+Transform syntax
+Polyfill features that are missing in your target environment (through a third-party polyfill such as core-js)
+Source code transformations (codemods)
+And more! (check out these videos for inspiration)
+// Babel Input: ES2015 arrow function
+[1, 2, 3].map(n => n + 1);
+ 
+// Babel Output: ES5 equivalent
+[1, 2, 3].map(function(n) {
+  return n + 1;
+});
+ 
+Copy
+For an awesome tutorial on compilers, check out the-super-tiny-compiler, which also explains how Babel itself works on a high level.
+ 
+Using the Fetch API
+The Fetch API provides a JavaScript interface for accessing and manipulating parts of the protocol, such as requests and responses. It also provides a global fetch() method that provides an easy, logical way to fetch resources asynchronously across the network.
+This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP.
+The fetch specification differs from jQuery.ajax() in the following significant ways:
+The Promise returned from fetch() won't reject on HTTP error status even if the response is an HTTP 404 or 500. Instead, as soon as the server responds with headers, the Promise will resolve normally (with the ok property of the response set to false if the response isn't in the range 200–299), and it will only reject on network failure or if anything prevented the request from completing.
+Unless fetch() is called with the credentials option set to include, fetch():
+won't send cookies in cross-origin requests
+won't set any cookies sent back in cross-origin responses
+As of August 2018, the default credentials policy changed to same-origin. Firefox was also modified in version 61.0b13)
+A basic fetch request is really simple to set up. Have a look at the following code:
+fetch('http://example.com/movies.json')
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+ 
+If you are new to React.js, you must be wondering why it is so popular and why you should use it in your applications. If so, then you are in the right place.
+ 
+ 
+Let's discuss what makes React.js so great and why you should use it in your projects.
+Table of Contents
+A Brief History of React.js
+Why Should You USe React?
+React is Flexible
+React Has a Great Developer Experience
+React Has Facebook's Support/Resources
+React Also Has Broader Community Support
+React Has Great Performance
+React is Easy to Test
+ 
+ 
+
