@@ -18,6 +18,7 @@ if your localhost database use passward for a root or user make sure you provide
  Lodin details 
  
 Admin Username/Email: admin@gmail.com
+-------------------------------------
 Admin Password: 12345
 ------------------------------------------------------------------------
 The project has two main Folders
@@ -100,7 +101,9 @@ Navigate to Server folder in Terminal and type
  Login details
  
  Admin Username/Email: admin@gmail.com
-Admin Password: 12345
+ -------------------------------------
+  Admin Password: 12345
+  ----------------------
 
 There are three type of user for the project 
 
